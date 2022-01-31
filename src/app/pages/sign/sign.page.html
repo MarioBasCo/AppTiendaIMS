@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true" mode="md">
+  <div class="container">
+    <section class="main">
+      <div class="sign-container">
+        <p class="title">Crea tu cuenta en Isabel Mini Store</p>
+        <form #formulario="ngForm" (ngSubmit)="registrarse()" class="sign-form">
+          <div class="ion-margin-bottom">
+            <ion-item lines="none" color="transparent" class="form-control">
+              <ion-label position="stacked">Nombre</ion-label>
+              <ion-icon slot="start" class="icon-field" name="person"></ion-icon>
+              <ion-input type="text" placeholder="Nombre" name="nombre" [(ngModel)]="objUser.nombre" required></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="ion-margin-bottom">
+            <ion-item lines="none" color="transparent" class="form-control">
+              <ion-label position="stacked">Apellido</ion-label>
+              <ion-icon slot="start" class="icon-field" name="person"></ion-icon>
+              <ion-input type="text" placeholder="Apellido" name="apellido" [(ngModel)]="objUser.apellido" required></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="ion-margin-bottom">
+            <ion-item lines="none" color="transparent" class="form-control">
+              <ion-label position="stacked">Correo</ion-label>
+              <ion-icon slot="start" class="icon-field" name="mail"></ion-icon>
+              <ion-input type="email" placeholder="Correo" name="correo" [(ngModel)]="objUser.correo" required></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="ion-margin-bottom">
+            <ion-item lines="none" color="transparent" class="form-control">
+              <ion-label position="stacked">Contraseña</ion-label>
+              <ion-icon slot="start" class="icon-field" name="lock-closed"></ion-icon>
+              <ion-input [type]="showPassword ? 'text': 'password'" placeholder="Contraseña" name="clave" [(ngModel)]="objUser.clave" required></ion-input>
+              <ion-icon slot="end" class="icon-pwd" [name]="passwordToggleIcon" (click)="togglePassword()">
+              </ion-icon>
+            </ion-item>
+          </div>
+
+          <div class="ion-margin-bottom">
+            <ion-item lines="none" color="transparent" class="form-control">
+              <ion-label position="stacked">Teléfono</ion-label>
+              <ion-icon slot="start" class="icon-field" name="call"></ion-icon>
+              <ion-input type="tel" placeholder="Teléfono" name="telefono" [(ngModel)]="objUser.telefono"></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="ion-margin-bottom">
+            <ion-item lines="none" color="transparent" class="form-control">
+              <ion-label position="stacked">Dirección</ion-label>
+              <ion-icon slot="start" class="icon-field" name="location"></ion-icon>
+              <ion-input type="text" placeholder="Dirección" name="direccion" [(ngModel)]="objUser.direccion"></ion-input>
+            </ion-item>
+          </div>
+
+          <ion-button type="submit" color="river" expand="block" class="btn-reg" [disabled]="formulario.invalid">Registrarse</ion-button>
+        </form>
+
+        <div class="ion-text-center sing">
+          <p>Tienes una cuenta <b><a routerLink="/login">Ingresa</a></b></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <h2 class="ion-text-center titulo" >Comprobación del Pedido</h2>
+    <ion-buttons slot="end" (click)="closeModal()" class="ion-margin-end">
+      <ion-icon size="large" color="river" name="close"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col>
+        <div class="container">
+          <form [formGroup]="form" (ngSubmit)="confirmar()">
+            <div class="ion-margin-vertical">
+              <ion-label class="lb-item">Forma de Pago</ion-label>
+              <ion-select interface="popover" placeholder="Forma de Pago" formControlName="pago" name="pago">
+                <ion-select-option *ngFor="let val of values" [value]="val.value">{{val.label}}</ion-select-option>
+              </ion-select>
+            </div>
+
+            <div class="ion-margin-vertical">
+              <ion-label class="lb-item">Fecha de Entrega</ion-label>
+              <div class="note">
+                <ion-label class="info">Por defecto un día después de generar el pedido (no incluye hora).</ion-label>
+              </div>
+              <ion-datetime displayFormat="YYYY-MM-DD" [min]="fechaMin" value="{{modifyDate}}" cancelText="Cancelar" doneText="Aceptar" formControlName="fecha" name="fecha" (ionChange)="checkVal($event)"></ion-datetime>
+            </div>
+            
+            <div class="ion-margin-vertical">
+              <ion-label class="lb-item">Ubicación</ion-label>
+              <div class="note">
+                <ion-label class="info">Al confirmar este pedido <strong>Isabel Mini Store App</strong>  accederá a su ubicación, ingrese un nombre de referencia.</ion-label>
+              </div>
+              <ion-textarea rows="4" cols="20" placeholder="Ingrese una dirección de referencia..." formControlName="referencia" name="referencia"></ion-textarea>
+            </div>
+            
+            <div class="cont-btn">
+              <ion-button type="submit" expand="block" color="night" class="btn-conf" [disabled]="!form.valid">Finalizar</ion-button>
+            </div>
+          </form>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

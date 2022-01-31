@@ -1,0 +1,27 @@
+[
+    {
+        "icon": "home",
+        "nombre": "Inicio",
+        "pagina": "/home"
+    },
+    {
+        "icon": "person",
+        "nombre": "Mi Perfil",
+        "pagina": "/profile"
+    },
+    {
+        "icon": "bag",
+        "nombre": "Mis Pedidos",
+        "pagina": "/orders"
+    }, 
+    {
+        "icon": "star-half",
+        "nombre": "Calificar App",
+        "pagina": "/assessment"
+    },
+    {
+        "icon": "information",
+        "nombre": "Acerca de.",
+        "pagina": "/about"
+    }
+]

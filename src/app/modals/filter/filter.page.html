@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="night">
+    <ion-title class="ion-text-center" color="platinum">Filtrar Productos</ion-title>
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-icon size="large" color="river" name="close"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>Seleccione Una Opción</ion-label>
+    </ion-list-header>
+    <ion-radio-group [(ngModel)]="valorSeleccionado">
+      <ion-item *ngFor="let item of listOptions">
+        <ion-label>{{item.nombre}}</ion-label>
+        <ion-radio slot="start" color="river" [value]="item.detalle"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    </ion-list>
+</ion-content>
+
+<ion-footer class="ion-no-border myColor">
+  <ion-row>
+    <ion-col>
+      <ion-button color="lead" expand="block" class="ion-text-capitalize" (click)="closeModal()">Cancelar</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button color="lead" expand="block" class="ion-text-capitalize" (click)="salirConDatos()">Aceptar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -1,0 +1,82 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-content, ion-toolbar {
+    --background: #fff !important;
+    --color: black !important;;
+}
+
+ion-col {
+    height: 70vh;
+    //height: 0%;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titulo {
+    color: var(--ion-color-night);
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 95%;
+
+    .lb-item {
+        font-size: 1.2em;
+        color: var(--ion-color-river);
+        letter-spacing: 1px;
+    }
+
+    ion-select, ion-datetime {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        height: 50px;
+        border: 1px solid var(--ion-color-lead);
+        margin-top: 10px;
+        //margin-bottom: 30px;
+    }
+
+    .note {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: justify;
+        .info {
+            font-size: 16px;
+        }
+    }
+
+    ion-textarea {
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid var(--ion-color-lead);
+        margin-bottom: 10px;
+    }
+}
+
+ion-datetime {
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+.cont-btn {
+    margin-top: 2.3rem;
+    .btn-conf {
+        --border-radius: 20px;
+        //height: 45px;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        font-size: 1.10em;
+    }
+}

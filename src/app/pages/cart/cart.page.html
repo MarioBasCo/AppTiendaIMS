@@ -1,0 +1,89 @@
+<app-header titulo="Carrito"></app-header>
+
+<ion-content [fullscreen]="true">
+    <ng-container *ngIf="listaCarrito.length == 0">
+        <div class="cart-clear">
+            <ion-img src="assets/icon/cart-clear.png">
+            </ion-img>
+            <div class="lb-cart">Su carrito esta vacío</div>
+        </div>
+    </ng-container>
+
+    <ion-list *ngFor="let item of listaCarrito; let i = index;" class="list-content" >
+        <ion-card>
+            <ion-card-content>
+                <ion-item lines="none" class="ion-no-padding">
+                    <ion-grid class="ion-no-padding">
+                        <ion-row>
+                            <ion-col size="4">
+                                <div class="ion-margin-end">
+                                    <ion-img [src]="url + item.producto.foto_producto"></ion-img>
+                                </div>
+                            </ion-col>
+        
+                            <ion-col size="8">
+                                <div>
+                                    <div class="titulo-pro">
+                                        {{item.producto.nombre_producto}}
+                                    </div>
+                                    <div>
+                                        Precio Unit. $ {{ item.producto.precio |number:'1.2-2' }}
+                                    </div>
+                                    <div>
+                                        Total <b>$ {{ item.total | number:'1.2-2' }}</b>
+                                    </div>
+                                    <ion-row>
+                                        <ion-col>
+                                            <ion-button color="lead" (click)="down(i)">
+                                                <ion-icon style="font-size:20px;" name="chevron-down-outline"></ion-icon>
+                                            </ion-button>
+                                        </ion-col>
+                                        <ion-col>
+                                            <div class="ion-text-center">
+                                                {{item.cantidad}}
+                                            </div>
+                                        </ion-col>
+                                        <ion-col>
+                                            <ion-button color="lead" (click)="up(i)">
+                                                <ion-icon style="font-size:20px;" name="chevron-up-outline"></ion-icon>
+                                            </ion-button>
+                                        </ion-col>
+                                        <ion-col>
+                                            <ion-button color="danger" (click)="eliminar(item)">
+                                                <ion-icon style="font-size:20px;" name="trash"></ion-icon>
+                                            </ion-button>
+                                        </ion-col>
+                                    </ion-row>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>
+
+
+<ion-footer class="ion-no-border">
+    <div class="confirm">
+        <ion-row>
+            <ion-col style="text-align: right;">
+                <strong>Total Venta<br /></strong>
+                <strong>Precio Envio<br /></strong>
+                <strong>TOTAL</strong>
+            </ion-col>
+            <ion-col style="text-align: end;">
+                $ {{ totalProductos |number:'1.2-2' }} <br />
+                $ {{ envio |number:'1.2-2' }}<br />
+                <b>$ {{ totalPago |number:'1.2-2' }}</b>
+            </ion-col>
+        </ion-row>
+
+        <ion-col class="ion-no-padding">
+            <ion-button class="btn-confirm" color="night" expand="block" [disabled]="botonValid" (click)="openDetail()">
+                Confirmar Pedido
+            </ion-button>
+        </ion-col>
+    </div>
+</ion-footer>

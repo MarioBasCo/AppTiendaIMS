@@ -1,0 +1,32 @@
+<app-header titulo="Mi Perfil"></app-header>
+
+<ion-content [fullscreen]="true">
+    <div class="container">
+        <div class="profile-container">
+            <div class="img-container">
+                <img src="assets/icon/user-profile.png">
+            </div>
+            <p class="info full-name">
+                {{objCliente.nombre}}
+            </p>
+            <p class="info">
+                <ion-icon name="mail"></ion-icon>
+                {{objCliente.correo}}
+            </p>
+            <p class="info">
+                <ion-icon name="location"></ion-icon>
+                {{objCliente.direccion}}
+            </p>
+            <p class="info">
+                <ion-icon name="call"></ion-icon>
+                {{objCliente.telefono}}
+            </p>
+            <div class="detail_info">
+                <p><span>{{objCliente.compras}}</span>Compras</p>
+                <p><span>{{objCliente.total | currency: 'USD'}}</span>Total</p>
+            </div>
+            <button class="edit" (click)="openEdit()">Editar</button>
+        </div>
+    </div>
+</ion-content>
+

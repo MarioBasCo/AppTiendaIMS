@@ -24,3 +24,30 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.small-modal{
+    .modal-wrapper {
+        height: 60%;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 15px;
+    }
+}
+
+.my-modal-class{
+    .modal-wrapper{
+        height: 50%;
+        width: 90%;
+        border-radius: 15px;
+    }
+}
+
+.modal-pedido {
+    .modal-wrapper{
+        max-width: 100%;
+        margin: 0px 15px;
+        border-radius: 12px;
+        //box-shadow: 0px 0px 20px #8b8b8b;
+        height: 80vh;
+    }
+}

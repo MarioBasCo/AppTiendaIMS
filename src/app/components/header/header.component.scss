@@ -1,0 +1,21 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-header {
+    height: 70px;
+    background-color: var(--ion-color-platinum);
+    ion-toolbar {
+        width: 100%;
+        height: 100%;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 10px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        ion-title {
+            --color: white;
+            font-size: 18px;
+        }
+    }
+}

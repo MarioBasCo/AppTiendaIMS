@@ -1,0 +1,26 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-content, ion-toolbar {
+    --background: #fff !important;
+    --color: black !important;;
+}
+
+ion-grid {
+    --ion-grid-column-padding: 10px;
+    border-collapse: collapse;
+    border-style: hidden;
+    
+    ion-row:first-child {
+      background-color:  var(--ion-color-river);
+      color: var(--ion-color-nigth) !important;
+      font-weight: bold;
+    }
+
+    .hr {
+        border-bottom: 1px solid #ccc;
+        margin: 10px 0;
+        width: 100%;
+    }
+}

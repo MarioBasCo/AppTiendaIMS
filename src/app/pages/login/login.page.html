@@ -1,0 +1,38 @@
+<ion-content [fullscreen]="true" mode="md">
+  <div class="container">
+    <section class="main">
+      <div class="login-container">
+        <p class="title">Bienvenido a Isabel Mini Store</p>
+        <div class="separator"></div>
+        <p class="welcome-message">Por favor, ingrese sus credenciales de inicio de sesión para continuar y tener acceso
+          a todos nuestros servicios.</p>
+
+        <form #formulario="ngForm" (ngSubmit)="ingresar()" class="login-form">
+          <div class="ion-margin-bottom">
+            <ion-item lines="none" color="transparent" class="form-control">
+              <ion-label position="stacked">Correo</ion-label>
+              <ion-icon slot="start" class="icon-field" name="mail"></ion-icon>
+              <ion-input type="email" placeholder="Correo" name="nombre" [(ngModel)]="nombre" required></ion-input>
+            </ion-item>
+          </div>
+          
+          <div class="ion-margin-bottom">
+            <ion-item lines="none" color="transparent" class="form-control">
+              <ion-label position="stacked">Contraseña</ion-label>
+              <ion-icon slot="start" class="icon-field" name="lock-closed"></ion-icon>
+              <ion-input [type]="showPassword ? 'text': 'password'" placeholder="Contraseña" name="clave" [(ngModel)]="clave" required></ion-input>
+              <ion-icon slot="end" class="icon-pwd" [name]="passwordToggleIcon" (click)="togglePassword()">
+              </ion-icon>
+            </ion-item>
+          </div>
+
+          <ion-button type="submit" color="river" expand="block" class="btn-login" [disabled]="formulario.invalid">Ingresar</ion-button>
+        </form>
+        <div class="ion-text-center sing">
+          <p>¿No tienes una cuenta? <b><a routerLink="/sign">Registrate</a></b></p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</ion-content>

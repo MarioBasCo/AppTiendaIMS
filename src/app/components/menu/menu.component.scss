@@ -1,0 +1,21 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.logout {
+    padding-top: 50px;
+    ion-icon{
+        --color: white;
+    }
+    .btn-logout{
+        text-transform: capitalize;
+        color: white;
+        font-size: 1.15em;
+        font-weight: 600;
+    }
+}
+
+ion-item.selected {
+    --background: rgba(var(--ion-color-river-rgb), 0.14);
+}

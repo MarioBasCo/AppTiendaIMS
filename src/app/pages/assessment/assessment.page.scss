@@ -1,0 +1,72 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-content {
+    --background: var(--ion-color-platinum) !important;
+    --color: var(--ion-color-night) !important;
+}
+
+.container {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .saludo {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.calificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+
+    input[type="radio"] {
+        display: none;
+    }  
+
+    label {
+        font-size: 50px;
+    }
+
+    label:hover,
+    label:hover ~ label {
+        color: orange;
+    }
+
+    input[type="radio"]:checked ~ label {
+        color: orange;
+    }
+}
+  
+ion-item {
+    width: 80vw;
+    color: var(--ion-color-night);
+    .lb-comentario {
+        font-size: 1.2em;
+    }
+
+    ion-textarea {
+        border-radius: 15px !important;
+        border: 1px var(--ion-color-river) solid;
+        padding: 10px;
+    }
+}
+
+.btn-cal {
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-weight: bold;
+}

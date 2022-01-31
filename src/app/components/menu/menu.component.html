@@ -1,0 +1,40 @@
+<ion-menu side="end" menuId="primerMenu" contentId="principal" swipeGesture="false">
+  <ion-header class="ion-no-border">
+    <ion-toolbar color="river">
+      <ion-title class="ion-text-center">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list lines="full">
+      <ion-menu-toggle *ngFor="let item of optionsMenu | async">
+        <ion-item routerDirection="root" [routerLink]="[item.pagina]" routerLinkActive="selected">
+          <ion-icon slot="start" [name]="item.icon" color="secondary"></ion-icon>
+          <ion-label>{{item.nombre}}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle>
+        <ion-row class="logout">
+          <ion-col class="ion-text-center">
+            <ion-button color="river" expand="block" class="ion-margin-horizontal btn-logout" (click)="cerrarSesion()">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>
+                Cerrar Sesión
+              </ion-label>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer class="ion-no-border">
+    <ion-toolbar color="night">
+      <div class="ion-text-center">
+        <ion-label>© 2021, Isabel Mini Store</ion-label>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-menu>

@@ -1,0 +1,111 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-content {
+    --background: var(--ion-color-platinum) !important;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titulo{
+    color: var(--ion-color-night);
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.image-pro {
+    width: 55%;
+    img {
+        border: 1px solid var(--ion-color-lead);
+        border-radius: 20px;
+    }
+}
+
+.detail {
+    width: 100%;
+    color: var(--ion-color-night);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0px 20px 0px 20px;
+    text-align: justify;
+    flex-direction: column;
+
+    span {
+        font-weight: bold;
+        color: var(--ion-color-river);
+    }
+    
+    .btns-datail {
+        width: 100%;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+
+        .count{
+            width: 80px;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+}
+
+.card-price {
+    position: absolute; 
+    z-index: 2; 
+    right: 10px; 
+    top: 3em; 
+}
+
+.price {
+	display: inline-block;
+	width: auto;
+	height: 38px;
+	background-color: #6ab070;
+	-webkit-border-radius: 3px 4px 4px 3px;
+	-moz-border-radius: 3px 4px 4px 3px;
+	border-radius: 3px 4px 4px 3px;
+	border-left: 1px solid #6ab070;
+	margin-left: 19px;
+	position: relative;
+	color: white;
+	font-weight: 300;
+	font-size: 1.1em;
+    letter-spacing: 0.5px;
+	line-height: 38px;
+	padding: 0 10px 0 10px;
+	&:before {
+		content: "";
+		position: absolute;
+		display: block;
+		left: -19px;
+		width: 0;
+		height: 0;
+		border-top: 19px solid transparent;
+		border-bottom: 19px solid transparent;
+		border-right: 19px solid #6ab070;
+	}
+	&:after {
+		content: "";
+		background-color: white;
+		border-radius: 50%;
+		width: 4px;
+		height: 4px;
+		display: block;
+		position: absolute;
+		left: -9px;
+		top: 17px;
+	}
+}

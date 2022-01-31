@@ -1,5 +1,7 @@
 {
   "name": "isabel-store",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

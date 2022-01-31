@@ -1,0 +1,29 @@
+[
+    {
+        "id_producto": 1,
+        "nombre_producto": "Coca Cola 2 Ltrs",
+        "precio": 1.5,
+        "descripcion": "ervdcsartef",
+        "foto_producto": "https://tiaecuador.vteximg.com.br/arquivos/ids/155901-1000-1000/2000367.jpg?v=636225933290600000"
+    },
+    {
+        "id_producto": 2,
+        "nombre_producto": "Jugo Del Valle",
+        "precio": 1.3,
+        "descripcion": "jyrtherfcd",
+        "foto_producto": "https://tiaecuador.vteximg.com.br/arquivos/ids/184123-1000-1000/242597003.jpg?v=637668075144630000"
+    },
+    {
+        "id_producto": 3,
+        "nombre_producto": "Galletas Salticas",
+        "precio": 2.4,
+        "descripcion": "jyrthefwd",
+        "foto_producto": "https://tiaecuador.vteximg.com.br/arquivos/ids/162949-1000-1000/261897000.jpg?v=636964009972930000"
+    },
+    {
+        "id_producto": 4,
+        "nombre_producto": "Arroz Conejo 20 lb",
+        "precio": 8.50,
+        "foto": "https://tiaecuador.vteximg.com.br/arquivos/ids/161257-1000-1000/257216000.jpg?v=636844674953070000"
+    }
+]

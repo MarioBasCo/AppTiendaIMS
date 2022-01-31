@@ -1,0 +1,100 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar color="river" mode="md">
+    <ion-buttons slot="primary" (click)="openSearch()">
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-buttons>
+
+    <ion-buttons slot="secondary" class="ion-margin-end" routerLink="/cart">
+      <ion-badge color="dark">{{numProducts()}}</ion-badge>
+      <ion-icon slot="icon-only" name="cart"></ion-icon>
+    </ion-buttons>
+
+    <ion-buttons slot="end" color="night">
+      <ion-menu-button autoHide="false" menu="primerMenu">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Isabel Mini Store</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" mode="ios" [scrollEvents]="true">
+  <!-- Barra de búsqueda personalizada de productos -->
+  <div class="search">
+    <ion-item lines="none" class="ion-no-padding" color="transparent">
+      <ion-icon slot="start" color="river" name="search"></ion-icon>
+      <ion-input 
+        type="search" 
+        enterkeyhint="search" 
+        inputmode="search" 
+        clearInput
+        (ionChange)="cambiartext($event)"
+        [(ngModel)]="textBuscar"
+        (keyup.enter)="buscar()"
+        placeholder="Buscar Producto"></ion-input>
+      <ion-button color="transparent" (click)="openFilter()">
+        <ion-icon name="options" color="lead" size="large"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </div>
+
+  <!-- Segmento de las categorias estatico en la cabecera -->
+  <ion-item-divider class="segment ion-no-margin" lines="none" sticky [hidden]="mostrar">
+    <ion-segment scrollable mode="md" [value]="typeSelected" [(ngModel)]="typeSelected"
+      (ionChange)="segmentChanged($event)">
+      <ion-segment-button [value]="cat.idCategoria" *ngFor="let cat of listCat" id="segment-{{cat.idCategoria}}">
+        <ion-label>{{cat.nombreCat}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item-divider>
+
+  <!-- Muestra un card de la busqueda de productos sin resultados -->
+  <ng-container *ngIf="mensajePro.length > 0">
+    <ion-card>
+      <ion-card-content>
+        {{mensajePro}}
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <!-- Muestra los card de los productos -->
+  <ion-grid *ngIf="mensajePro.length == 0">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6" size-sm="6" size-md="3" size-lg="2"
+        *ngFor="let item of listPro">
+        <div class="card-container">
+          <div>
+            <h2 class="title-card">{{item.nombre_producto}}</h2>
+
+            <div class="ion-text-end">
+              <p class="card-price">{{item.precio | currency:'USD'}}</p>
+            </div>
+
+            <ion-img [src]="url+item.foto_producto">
+            </ion-img>
+
+            <!-- Muestra la categoria del producto solo cuando es buscado desde la barra de búsqueda -->
+            <div *ngIf="item.nombreCat" class="ion-text-center">
+              <ion-chip color="secondary">{{item.nombreCat}}</ion-chip>
+            </div>
+          </div>
+
+          <div>
+            <ion-row>
+              <ion-col size="6">
+                <ion-button class="btn-cart" color="night" expand="block" (click)="openDetail(item)">
+                  <ion-icon name="eye" color="platinum"></ion-icon>
+                </ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button class="btn-cart" color="night" expand="block" (click)="agregarProCarrito(item)">
+                  <ion-icon name="cart" color="platinum"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
