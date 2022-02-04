@@ -1,0 +1,15 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-content {
+    --background: var(--ion-color-platinum) !important;
+    --color: black !important;
+}
+
+.titulo {
+    h3 {
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+}

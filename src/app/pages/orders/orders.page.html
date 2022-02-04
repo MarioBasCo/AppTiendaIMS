@@ -5,24 +5,24 @@
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
-    <ion-segment scrollable [value]="selectId" [(ngModel)]="selectId" mode="md" (ionChange)="onChange($event)">
-        <ion-segment-button value="pendiente" id="pendiente">
-            <ion-label>No atendidos</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="atendido" id="atendido">
-            <ion-label>Atendidos</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="entregado" id="entregado">
-            <ion-label>Entregados</ion-label>
-        </ion-segment-button>
-    </ion-segment>
-
-    <div class="ion-padding">
+    <ion-item-divider class="segment ion-no-margin" lines="none" sticky mode="ios">
+        <ion-segment scrollable [value]="selectId" [(ngModel)]="selectId" mode="md" (ionChange)="onChange($event)">
+            <ion-segment-button value="pendiente" id="pendiente">
+                <ion-label>No atendidos</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="atendido" id="atendido">
+                <ion-label>Atendidos</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="entregado" id="entregado">
+                <ion-label>Entregados</ion-label>
+            </ion-segment-button>
+        </ion-segment>
         <ion-note>
             <ion-icon name="information-circle" style="font-size: 1.3em;"></ion-icon>
             Nota: Deslice hacia abajo para refrescar la app si es necesario.
         </ion-note>
-    </div>
+    </ion-item-divider>
+    
     
     <ion-grid>
         <ion-row>

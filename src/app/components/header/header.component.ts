@@ -1,3 +1,4 @@
+import { LstorageService } from './../../services/lstorage.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Input() titulo: string = "";
+  @Input() titulo: string;
+  retorno: string = '/home';
   
-  constructor() { }
+  constructor(private serStorage: LstorageService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let user = this.serStorage.get('user');
+    if(user?.id_perfil == 1){
+      this.retorno = '/home'
+    } else if (user?.id_perfil == 2){
+      this.retorno = '/manage-orders'
+    }
+  }
 
 }

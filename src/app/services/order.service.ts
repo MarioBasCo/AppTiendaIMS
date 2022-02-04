@@ -9,15 +9,14 @@ export class OrderService {
 
   constructor(private http: HttpClient, private serUtil: UtilsService) { }
 
-  /** Función que recupera los pedidos del usuario **/
-  getPedidos(id: number) {
-    const URL = this.serUtil.URL_API + 'pedidos/' + id;
+  getPedidosPorEstado(id: number){
+    const URL = this.serUtil.URL_API + 'administrarpedidos/' + id;
     return this.http.get<any>(URL);
   }
 
-  /** Función que recupera los productos de un pedido **/
-  getDetallePedido(id: number) {
-    const URL = this.serUtil.URL_API + 'detallepedido/' + id;
+  /** Función que recupera los pedidos del usuario **/
+  getPedidos(id: number) {
+    const URL = this.serUtil.URL_API + 'pedidos/' + id;
     return this.http.get<any>(URL);
   }
 
@@ -25,5 +24,11 @@ export class OrderService {
   getCompras(id: number) {
     const URL = this.serUtil.URL_API + 'compras/' + id;
     return this.http.get<any>(URL);
+  }
+
+  /** Función que cambia el estado de un pedido **/
+  cambiarEstado(id: number, data: any){
+    const URL = this.serUtil.URL_API + 'actualizarcarrito/' + id;
+    return this.http.post<any>(URL, this.serUtil.objectToFormData(data));
   }
 }

@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <h2 class="ion-text-center titulo" >Detalles del Pedido</h2>
+    <h2 class="ion-text-center titulo">Detalles del Pedido</h2>
     <ion-buttons slot="end" (click)="closeModal()" class="ion-margin-end">
       <ion-icon size="large" color="river" name="close"></ion-icon>
     </ion-buttons>
@@ -10,8 +10,14 @@
 <ion-content [fullscreen]="true">
   <div class="ion-text-end ion-margin">
     <h4>
-      <strong>Código {{ idCodigo }}</strong> 
+      <strong>Código {{ objPedido.codigo }}</strong>
     </h4>
+  </div>
+  <div class="ion-text-start ion-margin">
+    <h6><b>Cliente:</b> {{objPedido.datos_cliente.nombre}}</h6>
+    <h6><b>Teléfono:</b> {{objPedido.datos_cliente.telefono}}</h6>
+    <h6><b>Fecha de Entrega:</b> {{objPedido.fecha_compra}}</h6>
+    <h6><b>Dirección de Referencia:</b> {{objPedido.direccion.referencia}}</h6>
   </div>
   <ion-grid class="ion-padding">
     <ion-row class="ion-text-center">
@@ -20,24 +26,29 @@
       <ion-col>P.U.</ion-col>
       <ion-col>Total</ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of listProductos" class="ion-align-items-center">
+    <ion-row *ngFor="let item of objPedido.detalle" class="ion-align-items-center">
       <ion-col class="ion-text-end">{{ item.cantidad }}</ion-col>
       <ion-col>{{ item.nombre_producto }}</ion-col>
       <ion-col class="ion-text-end">{{ item.precio | currency:'USD' }}</ion-col>
-      <ion-col class="ion-text-end">{{ item.total | currency:'USD' }}</ion-col>
+      <ion-col class="ion-text-end">{{ item.cantidad * item.precio | currency:'USD' }}</ion-col>
       <div class="hr"></div>
     </ion-row>
     <ion-row class="ion-align-items-center">
       <ion-col>TOTAL PRODUCTOS</ion-col>
-      <ion-col class="ion-text-end"> $ {{ totalPro | number:'1.2-2' }} </ion-col>
+      <ion-col class="ion-text-end"> $ {{ totalpro | number:'1.2-2' }} </ion-col>
     </ion-row>
     <ion-row class="ion-align-items-center">
       <ion-col>ENVÍO</ion-col>
-      <ion-col class="ion-text-end"> $ {{ precioEnvio | number:'1.2-2' }} </ion-col>
+      <ion-col class="ion-text-end"> $ {{ precioenvio | number:'1.2-2' }} </ion-col>
     </ion-row>
     <ion-row class="ion-align-items-center">
       <ion-col><b>TOTAL A PAGAR</b></ion-col>
       <ion-col class="ion-text-end"><b>$ {{ total | number:'1.2-2' }}</b></ion-col>
+    </ion-row>
+    <ion-row *ngIf="admin">
+      <ion-col *ngIf="mensajeBtn != ''">
+        <ion-button expand="block" color="night" (click)="cambiarEstadoCarrito()">{{mensajeBtn}}</ion-button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

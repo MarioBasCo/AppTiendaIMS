@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">isabel-store</string>
+    <string name="title_activity_main">isabel-store</string>
+    <string name="package_name">com.stip.isabel.app</string>
+    <string name="custom_url_scheme">com.stip.isabel.app</string>
+</resources>

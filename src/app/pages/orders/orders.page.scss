@@ -6,12 +6,19 @@ ion-content {
     --background: var(--ion-color-platinum) !important;
 }
 
+.segment {
+    --background: var(--ion-color-platinum) !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 ion-segment {
-    //width: 100%;
-    //justify-content: center;
+    width: 100%;
+    /* justify-content: center;
     margin-left: 16px;
     margin-right: 16px;
-    border-radius: 10px;
+    border-radius: 10px; */
     ion-label {
         text-transform: capitalize;
         font-size: 1.03rem;
@@ -21,7 +28,10 @@ ion-segment {
 }
 
 ion-segment-button {
-    --color-checked: var(--ion-color-lead);
+    --color: var(--ion-color-lead);
+    // --background-checked: var(--ion-color-river);
+    --indicator-color: var(--ion-color-night) !important;
+    --color-checked: var(--ion-color-night) !important;
 }
 
 /* ion-col {

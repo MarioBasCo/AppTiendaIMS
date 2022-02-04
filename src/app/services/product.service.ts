@@ -1,3 +1,4 @@
+import { UtilsService } from './utils.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -6,21 +7,24 @@ import { Injectable } from '@angular/core';
 })
 export class ProductService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private serUtil: UtilsService) { }
 
   getProducts(){
     return this.http.get('assets/data/productos.json');
   }
 
   getProductos(id: number){
-    return this.http.get<any>('http://localhost/apiisabel/productos/'+id);
+    const URL = this.serUtil.URL_API + 'productos/' + id;
+    return this.http.get<any>(URL);
   }
 
   getCategorias(){
-    return  this.http.get<any>('http://localhost/apiisabel/categorias');
+    const URL = this.serUtil.URL_API + "categorias";
+    return  this.http.get<any>(URL);
   }
 
   buscarPorNombre(nombre: string){
-    return this.http.get<any>('http://localhost/apiisabel/productosFil/'+nombre);
+    const URL = this.serUtil.URL_API + 'productosFil/' + nombre;
+    return this.http.get<any>(URL);
   }
 }

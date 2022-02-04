@@ -1,0 +1,35 @@
+<app-header titulo="Categorías"></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+    <div class="ion-text-center titulo">
+        <h3>Listado de Categorías</h3>
+    </div>
+
+    <div class="ion-text-end ion-margin-bottom">
+        <ion-button color="lead">Añadir</ion-button>
+    </div>
+
+    <ion-list *ngFor="let item of categorias; let i = index">
+        <ion-item-sliding>
+            <ion-item>
+                <ion-row>
+                    <ion-col>
+                        <ion-label>{{i+1}}</ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label>{{item.nombreCat}}</ion-label>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <ion-item-options side="end">
+                <ion-item-option color="river" (click)="editar(item)">
+                    <ion-icon name="create-outline"></ion-icon>
+                </ion-item-option>
+                <ion-item-option color="nigth" (click)="eliminar(item)">
+                    <ion-icon name="trash-bin-outline"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

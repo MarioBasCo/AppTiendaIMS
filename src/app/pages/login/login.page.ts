@@ -26,13 +26,6 @@ export class LoginPage implements OnInit {
     
   }
 
-  ionViewDidEnter(){
-    let user = this.serStorage.get('user');
-    if (user){
-      this.router.navigateByUrl('/home');
-    }
-  }
-
   togglePassword() {
     this.showPassword = !this.showPassword;
     if (this.passwordToggleIcon === 'eye-off-outline') {
@@ -46,8 +39,13 @@ export class LoginPage implements OnInit {
     if(this.nombre == '' || this.clave == ''){
       return;
     }
-    console.log(this.nombre, this.clave);
-    this.serLogin.login(this.nombre, this.clave).subscribe(
+    
+    const objCredenciales = {
+      correo: this.nombre,
+      clave: this.clave
+    }
+    
+    this.serLogin.login(objCredenciales).subscribe(
       resp => {
         if(resp.id == 0){
           this.serUtil.showToast(resp.mensaje, "danger");
@@ -55,8 +53,13 @@ export class LoginPage implements OnInit {
           let objUser = resp.info.data;
           delete objUser.usr_clave
           this.serStorage.set('user', objUser);
+          this.serLogin.enviarObject(objUser);
           this.limpiarForm();
-          this.router.navigate(['/home']);
+          if( parseInt(objUser?.id_perfil) == 1){
+            this.router.navigateByUrl('/home', { replaceUrl: true });
+          } else if( parseInt(objUser?.id_perfil) == 2){
+            this.router.navigateByUrl('/manage-orders', { replaceUrl: true });
+          }
         }
       }
     );

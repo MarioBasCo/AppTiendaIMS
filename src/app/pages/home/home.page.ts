@@ -4,7 +4,7 @@ import { FilterPage } from './../../modals/filter/filter.page';
 import { ProductDetailPage } from '../../modals/product-detail/product-detail.page';
 import { ProductService } from './../../services/product.service';
 import { CartService } from './../../services/cart.service';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { IonContent, ModalController, LoadingController } from '@ionic/angular';
 import { environment } from '../../../environments/environment';
 
@@ -28,51 +28,56 @@ export class HomePage implements OnInit {
     private serCart: CartService,
     private serStorage: LstorageService,
     private modalCtrl: ModalController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private cd: ChangeDetectorRef
   ) { }
 
-  ngOnInit() {
-    this.cargarCategorias();
-  }
+  ngOnInit() { }
 
   ionViewDidEnter(){
-    //window.location.reload();
-    let id = this.serStorage.get('id_cat');
-    if(id) {
-      this.desplazarScroll(id);
-    }
+    this.cargarCategorias();
   }
-
 
   /** Función que llama a las categorias **/
   cargarCategorias() {
     this.serPro.getCategorias().subscribe(
       data => {
         this.listCat = data.info.items;
-
-        // Verificamos si existe una categoría seleccionada por el usuario
-        let id = this.serStorage.get('id_cat');
-        if(!id) {
-          this.typeSelected = this.listCat[0].idCategoria;
-          this.serStorage.set('id_cat', this.typeSelected);
-        } else {
-          this.typeSelected = this.serStorage.get('id_cat');
-          this.desplazarScroll(id);
-        }
-        this.cargarProductosXCat(this.typeSelected);
+        this.comprobarCategoriaSelect(this.listCat[0].idCategoria);
+        this.cd.detectChanges();
+        this.cargarProductosXCat(this.typeSelected); 
       }
     );
   }
 
+  comprobarCategoriaSelect(data: any){
+    // Verificamos si existe una categoría seleccionada por el usuario
+    let id = this.serStorage.get('id_cat');
+    if(!id) {
+      this.typeSelected = data;
+      this.serStorage.set('id_cat', this.typeSelected);
+    } else {
+      this.typeSelected = id;
+    }
+  }
+
   /** Función que llama a los productos por categoría **/
-  cargarProductosXCat(id_categoria: number) {
+  async cargarProductosXCat(id_categoria: number) {
     this.mensajePro = '';
+    const loading = await this.loadingCtrl.create({
+      message: 'Espere Por Favor...'
+    });
+
+    await loading.present();
+
     this.serPro.getProductos(id_categoria).subscribe(
       data => {
+        loading.dismiss();
         this.listPro = data.info.items;
         if(this.listPro.length == 0){
           this.mensajePro = "No hay productos disponibles para esta categoría";
         }
+        this.desplazarScroll(this.typeSelected);
       }
     );
   }
@@ -102,6 +107,7 @@ export class HomePage implements OnInit {
       inline: 'center'
     });
   }
+  
   /** Función que muestra la barra de búsqueda **/
   openSearch() {
     this.content.scrollToTop(500);
@@ -156,7 +162,6 @@ export class HomePage implements OnInit {
 
       } else if (data.seleccion == "ascending") {
         this.listPro = this.listPro.sort((a, b) => (a.precio < b.precio ? -1 : 1));
-        console.log(this.listPro);
       } else if (data.seleccion == "descending") {
         this.listPro = this.listPro.sort((a, b) => (a.precio > b.precio ? -1 : 1));
       } else {

@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 
@@ -5,7 +6,7 @@ import { ToastController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class UtilsService {
-  public URL_API="http://localhost/apiisabel/";
+  public URL_API= environment.webService;
 
   constructor(private toast: ToastController) { }
 

@@ -1,3 +1,4 @@
+import { OrderDetailComponent } from './modals/order-detail/order-detail.component';
 import { FilterPageModule } from './modals/filter/filter.module';
 import { MenuModule } from './components/menu/menu.module';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, OrderDetailComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 

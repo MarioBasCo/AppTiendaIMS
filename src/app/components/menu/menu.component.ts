@@ -1,7 +1,8 @@
-import { Router } from '@angular/router';
-import { MenuService } from './../../services/menu.service';
+import { LstorageService } from './../../services/lstorage.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { LoginService } from './../../services/login.service';
+import { MenuService } from './../../services/menu.service';
 import { IMenu } from 'src/app/interfaces/interfaces';
 import { AlertController } from '@ionic/angular';
 
@@ -11,20 +12,46 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  optionsMenu: Observable<IMenu[]>
+  optionsMenu: IMenu[] = [];
+  mostrarOpciones: boolean = false;
+  user: any;
 
   constructor(
-    private menuService: MenuService, 
+    private menuService: MenuService,
+    private serLogin : LoginService,
+    private serStorage : LstorageService,
     private alertCtrl: AlertController,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.cargarMenu();
+    this.serLogin.$getObjectSource.subscribe(
+      data => {
+        this.user = data;
+        if (this.user.id_perfil == 2){
+          this.mostrarOpciones = true;
+        } else {
+          this.mostrarOpciones = false;
+        }
+        this.cargarMenu();
+      }
+    );
+    let admin = this.serStorage.get('user');
+    if(admin.id_perfil == 2){
+      this.mostrarOpciones = true;
+    } else {
+      this.mostrarOpciones = false;
+    }
+    
   }
 
+
   cargarMenu() {
-    this.optionsMenu = this.menuService.getMenu();
+    this.menuService.getMenu().subscribe(
+      resp => {
+        this.optionsMenu = resp;
+      }
+    );
   }
 
   cerrarSesion() {
@@ -36,8 +63,8 @@ export class MenuComponent implements OnInit {
           text: "Sí",
           handler: () => {
             localStorage.clear();            
-            this.router.navigate(['/login']);
-            window.location.reload(); //forzamos la recarga para evitar problemas de cache
+            location.href = '/login';
+            this.router.dispose();
           }
         },
         { text: "No" }

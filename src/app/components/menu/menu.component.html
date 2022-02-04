@@ -6,11 +6,56 @@
   </ion-header>
 
   <ion-content>
+    <ng-container *ngIf="mostrarOpciones">
+      <ion-list lines="full">
+        <ion-list-header>
+          Administrador
+        </ion-list-header>
+  
+        <ion-menu-toggle>
+          <ion-item routerDirection="root" routerLink="/manage-orders" routerLinkActive="selected">
+            <ion-icon slot="start" src="assets/icon/express-delivery.svg" color="secondary" class="icon-custom"></ion-icon>
+            <ion-label>
+              Pedidos
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+  
+        <ion-menu-toggle>
+          <ion-item routerDirection="root" routerLink="/categories" routerLinkActive="selected">
+            <ion-icon slot="start" src="assets/icon/category.svg" color="secondary" class="icon-custom"></ion-icon>
+            <ion-label>
+              Categorías
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+  
+        <ion-menu-toggle>
+          <ion-item routerDirection="root" routerLink="/products" routerLinkActive="selected">
+            <ion-icon slot="start" src="assets/icon/trolley.svg" color="secondary" class="icon-custom"></ion-icon>
+            <ion-label>
+              Productos
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ng-container>
+    
+    
     <ion-list lines="full">
-      <ion-menu-toggle *ngFor="let item of optionsMenu | async">
+      <ion-list-header *ngIf="mostrarOpciones">
+        Cliente
+      </ion-list-header>
+
+      <ion-menu-toggle *ngFor="let item of optionsMenu">
         <ion-item routerDirection="root" [routerLink]="[item.pagina]" routerLinkActive="selected">
           <ion-icon slot="start" [name]="item.icon" color="secondary"></ion-icon>
-          <ion-label>{{item.nombre}}</ion-label>
+          <div *ngIf="item.nombre == 'Inicio' && mostrarOpciones == true; else templateName">
+            <ion-label>Tienda</ion-label>
+          </div>
+          <ng-template #templateName>
+            <ion-label >{{item.nombre}}</ion-label>
+          </ng-template>
         </ion-item>
       </ion-menu-toggle>
 

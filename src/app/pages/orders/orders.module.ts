@@ -18,6 +18,6 @@ import { OrdersPage } from './orders.page';
     HeaderModule,
     OrdersPageRoutingModule
   ],
-  declarations: [OrdersPage, OrderDetailComponent]
+  declarations: [OrdersPage]
 })
 export class OrdersPageModule {}

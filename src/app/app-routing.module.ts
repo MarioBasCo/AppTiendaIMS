@@ -1,3 +1,5 @@
+import { AdminGuard } from './guards/admin.guard';
+import { AutoLoginGuard } from './guards/auto-login.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
@@ -10,41 +12,58 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    canLoad: [AutoLoginGuard]
   },
   {
     path: 'sign',
-    loadChildren: () => import('./pages/sign/sign.module').then( m => m.SignPageModule)
+    loadChildren: () => import('./pages/sign/sign.module').then( m => m.SignPageModule),
+    canLoad: [AutoLoginGuard]
   },
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'cart',
     loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule),
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'orders',
     loadChildren: () => import('./pages/orders/orders.module').then( m => m.OrdersPageModule),
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule),
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'assessment',
     loadChildren: () => import('./pages/assessment/assessment.module').then( m => m.AssessmentPageModule),
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
+  },
+  {
+    path: 'categories',
+    loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule),
+    canLoad: [AuthGuard, AdminGuard]
+  },
+  {
+    path: 'products',
+    loadChildren: () => import('./pages/products/products.module').then( m => m.ProductsPageModule),
+    canLoad: [AuthGuard, AdminGuard]
+  },
+  {
+    path: 'manage-orders',
+    loadChildren: () => import('./pages/manage-orders/manage-orders.module').then( m => m.ManageOrdersPageModule),
+    canLoad: [AuthGuard, AdminGuard]
   },
 ];
 

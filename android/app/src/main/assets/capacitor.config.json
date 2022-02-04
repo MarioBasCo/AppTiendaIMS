@@ -1,0 +1,6 @@
+{
+	"appId": "com.stip.isabel.app",
+	"appName": "isabel-store",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

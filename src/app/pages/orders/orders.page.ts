@@ -33,6 +33,7 @@ export class OrdersPage implements OnInit {
       this.serPed.getPedidos(usr.id_usuario).subscribe(
         resp => {
           this.pedidos = [];
+          console.log(resp);
           if (resp.status == false) {
             this.mensaje = resp.mensaje;
           } else {
@@ -85,7 +86,7 @@ export class OrdersPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: OrderDetailComponent,
       componentProps: {
-        idCodigo: item.codigo
+        objPedido: item
       },
       backdropDismiss: true,
       showBackdrop: true
