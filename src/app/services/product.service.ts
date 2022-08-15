@@ -18,8 +18,13 @@ export class ProductService {
     return this.http.get<any>(URL);
   }
 
+  addProducto(data: any){
+    const URL = this.serUtil.URL_API + 'producto';
+    return this.http.post<any>(URL, data);
+  }
+
   getCategorias(){
-    const URL = this.serUtil.URL_API + "categorias";
+    const URL = this.serUtil.URL_API + "procategorias";
     return  this.http.get<any>(URL);
   }
 

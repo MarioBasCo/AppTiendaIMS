@@ -15,10 +15,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     let user = this.serStorage.get('user');
     if(user?.id_perfil == 1){
-      this.retorno = '/home'
+      this.retorno = '/home';
     } else if (user?.id_perfil == 2){
-      this.retorno = '/manage-orders'
+      this.retorno = '/manage-orders';
     }
+    //console.log(this.retorno);
   }
 
 }

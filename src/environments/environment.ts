@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  webService: 'http://localhost/apiisabel/'
+  webService: 'https://isabelministore.000webhostapp.com/'
 };
 
 /*

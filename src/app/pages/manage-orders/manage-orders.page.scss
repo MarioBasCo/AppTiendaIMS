@@ -46,14 +46,14 @@ ion-content {
 
 .img-rep{
     position: absolute;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    ion-img {
-        width: 80%;
-        min-height: 30%;
-    }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* ion-img {
+        width: 70%;
+        min-height: 40%;
+        min-width: 20%;
+    } */
 }
 /* ion-col {
     display: grid;

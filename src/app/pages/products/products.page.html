@@ -1,5 +1,49 @@
 <app-header titulo="Productos"></app-header>
 
 <ion-content [fullscreen]="true">
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" id="form-pro">
+            <div class="ion-text-center titulo">
+                <h4>Registro de Productos</h4>
+            </div>
 
+            <ion-item lines="none" color="transparent">
+                <ion-select placeholder="Categoría" interface="popover" name="idCategoria" formControlName="idCategoria">
+                    <ion-select-option *ngFor="let cat of categorias" [value]="cat.idCategoria">{{cat.nombreCat}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+    
+            <ion-item lines="none" color="transparent">
+                <ion-label position="stacked">Nombre del Producto</ion-label>
+                <ion-input type="text" name="nombre_producto" formControlName="nombre_producto"></ion-input>
+            </ion-item>
+    
+            <ion-item lines="none" color="transparent">
+                <ion-label position="stacked">Descripción del Producto</ion-label>
+                <ion-textarea formControlName="descripcion" name="descripcion" rows="3">
+                </ion-textarea>
+            </ion-item>
+    
+            <ion-item lines="none" color="transparent">
+                <ion-label position="stacked">Cantidad</ion-label>
+                <ion-input type="number" name="cantidad" formControlName="cantidad"></ion-input>
+            </ion-item>
+    
+            <ion-item lines="none" color="transparent">
+                <ion-label position="stacked">Precio</ion-label>
+                <ion-input type="number" name="precio" formControlName="precio"></ion-input>
+            </ion-item>
+    
+            <ion-item lines="none" color="transparent">
+                <ion-input type="file" name="foto_producto" (change)="onFileSelect($event)"></ion-input>
+            </ion-item>
+    
+            <div class="ion-margin-top">
+                <ion-button color="night" expand="block" type="submit" shape="round" [disabled]="!form.valid">
+                    <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+                    <ion-label>Guardar</ion-label>
+                </ion-button>
+            </div>
+        </form>
+    </div>
 </ion-content>

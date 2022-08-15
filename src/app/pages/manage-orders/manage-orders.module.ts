@@ -1,3 +1,4 @@
+import { OrderDetailModule } from './../../modals/order-detail/order-detail.module';
 import { HeaderModule } from './../../components/header/header.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,6 +16,7 @@ import { ManageOrdersPage } from './manage-orders.page';
     FormsModule,
     IonicModule,
     HeaderModule,
+    OrderDetailModule,
     ManageOrdersPageRoutingModule
   ],
   declarations: [ManageOrdersPage]

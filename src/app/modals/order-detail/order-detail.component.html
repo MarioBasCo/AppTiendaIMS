@@ -13,12 +13,14 @@
       <strong>Código {{ objPedido.codigo }}</strong>
     </h4>
   </div>
+
   <div class="ion-text-start ion-margin">
     <h6><b>Cliente:</b> {{objPedido.datos_cliente.nombre}}</h6>
     <h6><b>Teléfono:</b> {{objPedido.datos_cliente.telefono}}</h6>
     <h6><b>Fecha de Entrega:</b> {{objPedido.fecha_compra}}</h6>
     <h6><b>Dirección de Referencia:</b> {{objPedido.direccion.referencia}}</h6>
   </div>
+
   <ion-grid class="ion-padding">
     <ion-row class="ion-text-center">
       <ion-col>Cant</ion-col>
@@ -45,10 +47,17 @@
       <ion-col><b>TOTAL A PAGAR</b></ion-col>
       <ion-col class="ion-text-end"><b>$ {{ total | number:'1.2-2' }}</b></ion-col>
     </ion-row>
+    <div class="ion-text-center ion-margin">
+      <ion-button color="lead" fill="outline" (click)="downloadPdf()">
+        <ion-icon size="large" name="print-outline"></ion-icon>
+      </ion-button>
+    </div>
     <ion-row *ngIf="admin">
       <ion-col *ngIf="mensajeBtn != ''">
         <ion-button expand="block" color="night" (click)="cambiarEstadoCarrito()">{{mensajeBtn}}</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  
 </ion-content>

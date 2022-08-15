@@ -1,26 +1,26 @@
 [
     {
-        "icon": "home",
+        "icon": "home-outline",
         "nombre": "Inicio",
         "pagina": "/home"
     },
     {
-        "icon": "person",
+        "icon": "person-outline",
         "nombre": "Mi Perfil",
         "pagina": "/profile"
     },
     {
-        "icon": "bag",
+        "icon": "bag-outline",
         "nombre": "Mis Pedidos",
         "pagina": "/orders"
     }, 
     {
-        "icon": "star-half",
+        "icon": "star-half-outline",
         "nombre": "Calificar App",
         "pagina": "/assessment"
     },
     {
-        "icon": "information",
+        "icon": "information-outline",
         "nombre": "Acerca de.",
         "pagina": "/about"
     }

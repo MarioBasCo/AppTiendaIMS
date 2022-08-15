@@ -25,7 +25,7 @@
               <div class="note">
                 <ion-label class="info">Por defecto un día después de generar el pedido (no incluye hora).</ion-label>
               </div>
-              <ion-datetime displayFormat="YYYY-MM-DD" [min]="fechaMin" value="{{modifyDate}}" cancelText="Cancelar" doneText="Aceptar" formControlName="fecha" name="fecha" (ionChange)="checkVal($event)"></ion-datetime>
+              <ion-datetime displayFormat="YYYY-MM-DD" [min]="fechaMin" cancelText="Cancelar" doneText="Aceptar" formControlName="fecha" name="fecha" (ionChange)="checkVal($event)"></ion-datetime>
             </div>
             
             <div class="ion-margin-vertical">

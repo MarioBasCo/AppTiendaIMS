@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  webService: 'http://localhost/apiisabel/'
+  webService: 'https://isabelministore.000webhostapp.com/'
 };

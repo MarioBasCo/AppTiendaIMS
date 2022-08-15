@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
     this.serLogin.$getObjectSource.subscribe(
       data => {
         this.user = data;
-        if (this.user.id_perfil == 2){
+        if (this.user?.id_perfil == 2){
           this.mostrarOpciones = true;
         } else {
           this.mostrarOpciones = false;
@@ -37,14 +37,14 @@ export class MenuComponent implements OnInit {
       }
     );
     let admin = this.serStorage.get('user');
-    if(admin.id_perfil == 2){
-      this.mostrarOpciones = true;
-    } else {
-      this.mostrarOpciones = false;
+    if(admin){
+      if(admin?.id_perfil == 2){
+        this.mostrarOpciones = true;
+      } else {
+        this.mostrarOpciones = false;
+      }
     }
-    
   }
-
 
   cargarMenu() {
     this.menuService.getMenu().subscribe(

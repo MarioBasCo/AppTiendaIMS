@@ -1,4 +1,3 @@
-import { OrderDetailComponent } from './modals/order-detail/order-detail.component';
 import { FilterPageModule } from './modals/filter/filter.module';
 import { MenuModule } from './components/menu/menu.module';
 import { NgModule } from '@angular/core';
@@ -11,10 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 
 @NgModule({
-  declarations: [AppComponent, OrderDetailComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 
@@ -25,7 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FilterPageModule,
     HttpClientModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [FileOpener, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

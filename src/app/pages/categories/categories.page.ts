@@ -1,4 +1,4 @@
-import { ProductService } from './../../services/product.service';
+import { CategoriesService } from './../../services/categories.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CategoriesPage implements OnInit {
   categorias: any []=[];
 
-  constructor(private serCat: ProductService) { }
+  constructor(private serCat: CategoriesService) { }
 
   ngOnInit() {
     this.serCat.getCategorias().subscribe(

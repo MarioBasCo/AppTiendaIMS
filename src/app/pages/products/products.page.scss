@@ -4,4 +4,39 @@
 
 ion-content {
     --background: var(--ion-color-platinum) !important;
+    --color: var(--ion-color-night) !important;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titulo {
+    h4{
+        color: var(--ion-color-river);
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    margin-bottom: 30px;
+}
+
+#form-pro {
+    background: #fff !important;
+    color: black !important;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    ion-item {
+        --color: var(--ion-color-night) !important;
+        border-radius: 10px;
+        border: 1px solid var(--ion-color-lead);
+        margin-bottom: 10px;
+        ion-select {
+            width: 100%;
+        }
+    }
 }

@@ -26,6 +26,7 @@ export class AppComponent {
   backButtonEvent() {
     this.platform.backButton.subscribeWithPriority(0, () => {
       this.routerOutlets.forEach(async (outlet: IonRouterOutlet) => {
+        //modificar rutas segun el rol de usuario
         if (this.router.url === '/home' || this.router.url === '/login') {
           if (new Date().getTime() - this.lastTimeBackPress >= this.timePeriodToExit) {
             this.lastTimeBackPress = new Date().getTime();

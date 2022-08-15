@@ -12,12 +12,24 @@
     <ion-list *ngFor="let item of categorias; let i = index">
         <ion-item-sliding>
             <ion-item>
-                <ion-row>
-                    <ion-col>
-                        <ion-label>{{i+1}}</ion-label>
+                <ion-row style="width: 100%;">
+                    <ion-col size="3">
+                        <div class="ion-text-end">
+                            <ion-label>{{i+1}}</ion-label>
+                        </div>
                     </ion-col>
-                    <ion-col>
-                        <ion-label>{{item.nombreCat}}</ion-label>
+                    <ion-col size="6">
+                        <div class="ion-text-justify">
+                            <ion-label>{{item.nombreCat}}</ion-label>
+                        </div>
+                    </ion-col>
+                    <ion-col size="3">
+                        <div class="ion-text-center">
+                            <ion-badge [color]="item.estado == 'A' ? 'success' : 'danger'">
+                                <span *ngIf="item.estado == 'A'">Activo</span>
+                                <span *ngIf="item.estado == 'I'">Inactivo</span>
+                            </ion-badge>
+                        </div>
                     </ion-col>
                 </ion-row>
             </ion-item>
